@@ -1,0 +1,11 @@
+form {
+  margin: 40px 0;
+}
+
+.done {
+  margin-top: 100px;
+}
+
+.handleTodo {
+  display: inline;
+}

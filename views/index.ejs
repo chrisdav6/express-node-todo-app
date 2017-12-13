@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/styles/app.css" type="text/css">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="container">
+    
+    <div class="page-header">
+      <h1>Stuff Todo</h1>
+    </div>
+    
+    <form class="form-inline" action="/todos" method="post">
+      <div class="form-group">
+        <input class="form-control" type="text" name="description">
+      </div>
+      <button class="btn btn-default">Add Todo</button>
+    </form>
+    
+    <ul class="list-group">
+      <% for(var i = 0; i < todos.length; i++) { %>
+        <li class="list-group-item"><%= todos[i].description %> | 
+          <form class="handleTodo" action="/todos/<%= todos[i]._id %>/completed" method="post">
+            <button class="btn btn-primary btn-xs">Mark Completed</button> 
+          </form>
+          <form class="handleTodo" action="/todos/<%= todos[i]._id %>?_method=DELETE" method="post">
+            <button href="/todos/<%= todos[i]._id %>" class="btn btn-danger btn-xs">Remove</button>
+          </form>
+        </li>
+      <% } %>
+    </ul>
+    
+    <div class="page-header done">
+      <h1>Done</h1>
+    </div>
+    
+    <ul class="list-group">
+      <% for(var i = 0; i < doneTodos.length; i++) { %>
+        <li class="list-group-item"><%= doneTodos[i].description %> | 
+          <form class="handleTodo" action="/todos/<%= doneTodos[i]._id %>/completed" method="post">
+            <button class="btn btn-primary btn-xs">Mark Not Completed</button> 
+          </form>
+          <form class="handleTodo" action="/todos/<%= doneTodos[i]._id %>?_method=DELETE" method="post">
+            <button href="/todos/<%= doneTodos[i]._id %>" class="btn btn-danger btn-xs">Remove</button>
+          </form>
+        </li>
+      <% } %>
+    </ul>
+    
+  </div><!--End of Container-->
+  
+</body>
+</html>
