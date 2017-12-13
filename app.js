@@ -7,7 +7,7 @@ var app = express();
 
 //Connect to MongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/todoApp", {
+mongoose.connect("mongodb://chris:1234@ds137256.mlab.com:37256/todoapp", {
   useMongoClient: true
 }).then(function() {
   console.log("Todo App Database Has Started!");
